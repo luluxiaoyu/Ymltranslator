@@ -9,9 +9,13 @@ using System.IO;
 
 namespace pdx_ymltranslator
 {
-
+    
     public partial class FrmTranslator : Form
+
+        
     {
+        public static string appid;
+        public static string sec;
         private void Mainfrm_Load(object sender, EventArgs e)
         {
             FormInit();
@@ -312,7 +316,7 @@ namespace pdx_ymltranslator
             }
             catch
             {
-                TxtAPI.Text = "Nothing";
+                TxtAPI.Text = "请先设置百度翻译API！";
                 GetTranslationTask.Dispose();
             }
             BtnAPItochnBox.Enabled = true;
@@ -645,6 +649,13 @@ namespace pdx_ymltranslator
                 }
                 LstFiles.Enabled = true;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Apiset apiset = new Apiset();
+            apiset.ShowDialog(this);
+            
         }
     }
 }

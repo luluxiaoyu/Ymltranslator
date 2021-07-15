@@ -7,6 +7,7 @@ using System.Web.Script.Serialization;
 using System.Collections.Generic;
 using Microsoft.VisualBasic;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace pdx_ymltranslator
 {
@@ -281,7 +282,7 @@ namespace pdx_ymltranslator
     {
         //public string From { get; set; }
         //public string To { get; set; }
-        public Translation[] Data { get; set; }
+        public Translation[] trans_result { get; set; }
     }
 
     public class Translation
@@ -308,9 +309,28 @@ namespace pdx_ymltranslator
         {
             WebClient wc = new WebClient();
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            TranslationResult result = jss.Deserialize<TranslationResult>(wc.DownloadString("http://fanyi.baidu.com/transapi?from=en&to=zh&query=" + WebUtility.UrlEncode(q)));
+            //生成sign
+            Random rd = new Random();
+            int i = rd.Next();//salt
+            string sign = FrmTranslator.appid + q + i + FrmTranslator.sec;//获取文本框字符串
+            string signres = jiami(sign);
+            //加密处理完成
+            TranslationResult result = jss.Deserialize<TranslationResult>(wc.DownloadString("https://fanyi-api.baidu.com/api/trans/vip/translate?from=en&to=zh&appid=20201004000580397&salt=" +  i + "&sign="+signres + "&q=" + WebUtility.UrlEncode(q)));
             return result;
             //解析json
+        }
+
+        private static string jiami(string sign)
+        {
+            MD5 md5 = MD5.Create();//创建 MD5 哈希算法的默认实现的实例。
+            byte[] md5b = md5.ComputeHash(Encoding.UTF8.GetBytes(sign));//计算指定字节数组的哈希值。参数为 字节数组
+
+            string s = "";//声明变量
+            for (int i = 0; i < md5b.Length; i++)//循环
+            {
+                s += md5b[i].ToString("x2");//转换为16进制字符串
+            }
+            return s;//返回
         }
 
         public static string GetTranslatedTextFromAPI(string TexttoTranslate)
@@ -318,9 +338,9 @@ namespace pdx_ymltranslator
             if (TexttoTranslate != "")
             {
                 TranslationResult result = GetTranslationFromBaiduFanyi(TexttoTranslate);
-                return result.Data[0].Dst;
+                return result.trans_result[0].Dst;
             }
-            return "Nothing";
+            return "请先设置百度翻译API！";
         }
         // 用于从baidu 翻译API获取翻译。
 

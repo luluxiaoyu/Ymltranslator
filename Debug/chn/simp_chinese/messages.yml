@@ -1,0 +1,121 @@
+﻿#Essentials color codes can be used in all messages (without needing essentials on your server) -> https://wiki.ess3.net/mc/
+
+############################################################
+# +------------------------------------------------------+ #
+# |                      RewardsGUI                      | #
+# +------------------------------------------------------+ #
+############################################################
+
+#The title of the inventory when executing the command /rewards.
+RewardsInventoryTitle: "&3您的奖励"
+
+#The title of the inventory when executing the command /givereward.
+GiveRewardInventoryTitle: "&2可用奖励"
+
+#Available placeholder: %redeemed% - %pending%
+#Each list item will be a new line.
+#Reward information displayed under reward name when executing /rewards.
+RewardInfo:
+  - "&a(redeemed: &2%redeemed%&a, pending: &2%pending%&a)"
+
+#Available placeholders: %total_in_seconds% - %total_in_minutes% - %total_in_hours% - %total_in_days% - %seconds% - %minutes% - %hours% - %days%
+#The following placeholders should be used together: %seconds% - %minutes% - %hours% - %days%
+#Each list item will be a new line.
+#Info displayed under reward description when executing /rewards if available and time left.
+NextReward:
+  - "&e下一个奖励在&6"
+  - "&6%days% 天, %hours% 小时, %minutes% 分钟, %seconds% 秒"
+
+#Info displayed under reward description when executing /rewards if player can't claim reward anymore.
+NextRewardNever:
+  - "&c已经赢得了这个奖励。"
+
+#Info displayed under reward description when executing /rewards if no permission for it but claimed or pending at least once.
+NextRewardNoPermission:
+  - "&你挣不到这个奖励。"
+
+#Available placeholders: %player% - %rewardname% - %world%
+#Notification send to players if they have a reward pending cause in an unclaimable world.
+PendingNotificationWrongWorld: "&e你有一个游戏时间奖励，但不能在这个世界上。"
+
+#Available placeholders: %player% - %rewardname% - %inventory_spaces_needed%
+#Notification send to players if they have a reward pending cause not enough inventory space left.
+PendingNotificationNotEnoughInventory: "&e你需要 &6%inventory_spaces_needed% &e空余位置来存放奖励"
+
+
+############################################################
+# +------------------------------------------------------+ #
+# |                       Commands                       | #
+# +------------------------------------------------------+ #
+############################################################
+
+#Available placeholders: %total_in_seconds% - %total_in_minutes% - %total_in_hours% - %total_in_days% - %seconds% - %minutes% - %hours% - %days%
+#The following placeholders should be used together: %seconds% - %minutes% - %hours% - %days%
+#Shown when executing the command /playtime.
+Playtime: "&6您已在此服务器上玩了%days%天、%hours%小时、%minutes%分钟和%seconds%秒。"
+
+#Available placeholders: %player% - %total_in_seconds% - %total_in_minutes% - %total_in_hours% - %total_in_days% - %seconds% - %minutes% - %hours% - %days%
+#The following placeholders should be used together: %seconds% - %minutes% - %hours% - %days%
+#Shown when executing the command /playtime <player>
+PlaytimeOther: "&6%player%已在此服务器上玩了%days%天、%hours%小时、%minutes%分钟和%seconds%秒。"
+
+#Available placeholders: %total_in_seconds% - %total_in_minutes% - %total_in_hours% - %total_in_days% - %seconds% - %minutes% - %hours% - %days%
+#The following placeholders should be used together: %seconds% - %minutes% - %hours% - %days%
+#Shown when executing the command /afktime
+AFKTime: "&6您在这台服务器上有%days%天、%hours%小时、%minutes%分钟和%seconds%秒的AFK。"
+
+#Available placeholders: %player% - %total_in_seconds% - %total_in_minutes% - %total_in_hours% - %total_in_days% - %seconds% - %minutes% - %hours% - %days%
+#The following placeholders should be used together: %seconds% - %minutes% - %hours% - %days%
+#Shown when executing the command /afktime <player>
+AFKTimeOther: "&6%player%在该服务器上有%days%天、%hours%小时、%minutes%分钟和%seconds%秒秒的AFK。"
+
+#Available placeholders: %player% - %rewardname%
+#Shown to player executing the command /givereward if the reward has been successfully given to player.
+RewardGiven: "&a%rewardname%奖励已给予%player%。"
+
+#Shown to player if executing the command /lpr reload was successful.
+ReloadSuccess: "&a已成功重新加载配置和消息。"
+
+#Available placeholders: %player% - %rewardname%
+#Shown to player if executing the command /lpr reset <reward> <player> was successful.
+ResetSuccess: "&a玩家%player%的%rewardname%已成功重置。"
+
+
+############################################################
+# +------------------------------------------------------+ #
+# |                        Errors                        | #
+# +------------------------------------------------------+ #
+############################################################
+
+#Error thrown if command requires to be executed by an online player.
+NeedToBeOnline: "&c您需要登录才能使用此命令。"
+
+#Error thrown when executing the command /afktime or /afktime <player> and if server hasn't got essentials installed.
+ServerDoesntKeepTrackOfAFK: "&c此服务器不跟踪AFK时间。"
+
+#Error thrown when executing the command /givereward and no rewards are configured in the config file.
+NoRewardsConfigured: "&c配置文件中配置的奖励。"
+
+#Error thrown when executing the command /rewards and there are no rewards available for the player.
+NoRewardsAvailable: "&C您没有任何奖励。"
+
+#Error thrown if player has no permission to use the command.
+NoPermission: "&c您没有执行此命令的权限。"
+
+#Available placeholders: %player%
+#Error thrown if command requires player data but player has no data on the server.
+NoData: "&c%player%在此服务器上还没有数据。"
+
+#Available placeholders: %rewardname%
+#Error thrown when executing /givereward <reward> <playername> [amount] [broadcast] and reward isn't configured on the server.
+NoSuchReward: "&c%rewardname%不是可用的奖励。"
+
+#Error thrown when executing /givereward <reward> <playername> [amount] [broadcast] and amount is not a number greater then 0.
+NotANumber: "&cAmount必须是大于0的正数。"
+
+#Error thrown when executing /givereward <reward> <playername> [amount] [broadcast] and broadcast is not true or false.
+NotABoolean: "&cBroadcast必须为true或false。"
+
+#Available placeholders: %player%
+#Error thrown if command requires receiving player to be online but isn't.
+NotOnline: "&c玩家%player%未联机。"

@@ -69,6 +69,7 @@
             this.BtnAllToSimpChn = new System.Windows.Forms.Button();
             this.BtnMergeAll = new System.Windows.Forms.Button();
             this.ChkCRLF = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DfData)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -97,7 +98,7 @@
             this.BtnSave.Size = new System.Drawing.Size(97, 34);
             this.BtnSave.TabIndex = 3;
             this.BtnSave.TabStop = false;
-            this.BtnSave.Text = "Save (Ctrl+S)";
+            this.BtnSave.Text = "保存 (Ctrl+S)";
             this.BtnSave.UseVisualStyleBackColor = true;
             this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
@@ -122,9 +123,9 @@
             this.LabFROM.AutoSize = true;
             this.LabFROM.Location = new System.Drawing.Point(853, 561);
             this.LabFROM.Name = "LabFROM";
-            this.LabFROM.Size = new System.Drawing.Size(29, 12);
+            this.LabFROM.Size = new System.Drawing.Size(53, 12);
             this.LabFROM.TabIndex = 6;
-            this.LabFROM.Text = "FROM";
+            this.LabFROM.Text = "原始字段";
             // 
             // LabTo
             // 
@@ -134,7 +135,7 @@
             this.LabTo.Name = "LabTo";
             this.LabTo.Size = new System.Drawing.Size(53, 12);
             this.LabTo.TabIndex = 7;
-            this.LabTo.Text = "Trans To";
+            this.LabTo.Text = "翻译字段";
             // 
             // DfData
             // 
@@ -209,12 +210,12 @@
             // BtnApply
             // 
             this.BtnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnApply.Location = new System.Drawing.Point(853, 658);
+            this.BtnApply.Location = new System.Drawing.Point(853, 650);
             this.BtnApply.Name = "BtnApply";
             this.BtnApply.Size = new System.Drawing.Size(94, 34);
             this.BtnApply.TabIndex = 0;
             this.BtnApply.TabStop = false;
-            this.BtnApply.Text = "Apply (Ctrl+Enter)";
+            this.BtnApply.Text = "请求更改 (Ctrl+Enter)";
             this.BtnApply.UseVisualStyleBackColor = true;
             this.BtnApply.Click += new System.EventHandler(this.BtnApply_Click);
             // 
@@ -236,7 +237,7 @@
             this.BtnAPItochnBox.Size = new System.Drawing.Size(122, 34);
             this.BtnAPItochnBox.TabIndex = 13;
             this.BtnAPItochnBox.TabStop = false;
-            this.BtnAPItochnBox.Text = "Paste API text to Translate(Ctrl+↑)";
+            this.BtnAPItochnBox.Text = "将机翻文本复制上去(Ctrl+↑)";
             this.BtnAPItochnBox.UseVisualStyleBackColor = true;
             this.BtnAPItochnBox.Click += new System.EventHandler(this.BtnAPItochnBox_Click);
             // 
@@ -248,7 +249,7 @@
             this.BtnOpenFileTranslated.Size = new System.Drawing.Size(103, 34);
             this.BtnOpenFileTranslated.TabIndex = 14;
             this.BtnOpenFileTranslated.TabStop = false;
-            this.BtnOpenFileTranslated.Text = "Open Translated";
+            this.BtnOpenFileTranslated.Text = "打开翻译后的文件";
             this.BtnOpenFileTranslated.UseVisualStyleBackColor = true;
             this.BtnOpenFileTranslated.Click += new System.EventHandler(this.BtnOpenFile_Click);
             // 
@@ -260,7 +261,7 @@
             this.BtnOpenFileOriginal.Size = new System.Drawing.Size(103, 34);
             this.BtnOpenFileOriginal.TabIndex = 15;
             this.BtnOpenFileOriginal.TabStop = false;
-            this.BtnOpenFileOriginal.Text = "Open Original";
+            this.BtnOpenFileOriginal.Text = "打开原始文件";
             this.BtnOpenFileOriginal.UseVisualStyleBackColor = true;
             this.BtnOpenFileOriginal.Click += new System.EventHandler(this.BtnOpenFileOriginal_Click);
             // 
@@ -272,7 +273,7 @@
             this.BtnOpenBrowser.Size = new System.Drawing.Size(56, 34);
             this.BtnOpenBrowser.TabIndex = 16;
             this.BtnOpenBrowser.TabStop = false;
-            this.BtnOpenBrowser.Text = "Open Browser";
+            this.BtnOpenBrowser.Text = "打开浏览器";
             this.BtnOpenBrowser.UseVisualStyleBackColor = true;
             this.BtnOpenBrowser.Click += new System.EventHandler(this.BtnOpenBrowser_Click);
             // 
@@ -469,7 +470,7 @@
             this.groupBox1.Size = new System.Drawing.Size(108, 51);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Text Color";
+            this.groupBox1.Text = "文本颜色";
             // 
             // LabColorEnd
             // 
@@ -493,7 +494,7 @@
             this.LabHelp.Name = "LabHelp";
             this.LabHelp.Size = new System.Drawing.Size(29, 12);
             this.LabHelp.TabIndex = 33;
-            this.LabHelp.Text = "Help";
+            this.LabHelp.Text = "帮助";
             this.LabHelp.DoubleClick += new System.EventHandler(this.LabHelp_DoubleClick);
             // 
             // CombOldVersion
@@ -578,7 +579,7 @@
             this.BtnMergeAll.Name = "BtnMergeAll";
             this.BtnMergeAll.Size = new System.Drawing.Size(45, 23);
             this.BtnMergeAll.TabIndex = 40;
-            this.BtnMergeAll.Text = "Merge";
+            this.BtnMergeAll.Text = "合并";
             this.BtnMergeAll.UseVisualStyleBackColor = true;
             this.BtnMergeAll.Click += new System.EventHandler(this.BtnMergeAll_Click);
             // 
@@ -593,11 +594,22 @@
             this.ChkCRLF.Text = "CRLF";
             this.ChkCRLF.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(853, 685);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 23);
+            this.button1.TabIndex = 42;
+            this.button1.Text = "设置API";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmTranslator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 801);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.ChkCRLF);
             this.Controls.Add(this.BtnMergeAll);
             this.Controls.Add(this.BtnAllToSimpChn);
@@ -628,7 +640,7 @@
             this.KeyPreview = true;
             this.Name = "FrmTranslator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "YML Translator";
+            this.Text = "YML配置文件汉化工具";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Mainfrm_FormClosed);
             this.Load += new System.EventHandler(this.Mainfrm_Load);
             this.SizeChanged += new System.EventHandler(this.FrmTranslator_SizeChanged);
@@ -680,6 +692,7 @@
         private System.Windows.Forms.Button BtnAllToSimpChn;
         private System.Windows.Forms.Button BtnMergeAll;
         private System.Windows.Forms.CheckBox ChkCRLF;
+        private System.Windows.Forms.Button button1;
     }
 }
 

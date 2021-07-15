@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{42CC41FE-37A0-4A35-B999-A7F0221AF153}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>pdx_ymltranslator</RootNamespace>
-    <AssemblyName>pdx-ymltranslator</AssemblyName>
+    <RootNamespace>ymltranslator</RootNamespace>
+    <AssemblyName>ymltranslator</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -92,6 +92,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Apiset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apiset.Designer.cs">
+      <DependentUpon>Apiset.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTranslator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Apiset.resx">
+      <DependentUpon>Apiset.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmTranslator.resx">
       <DependentUpon>frmTranslator.cs</DependentUpon>
     </EmbeddedResource>
